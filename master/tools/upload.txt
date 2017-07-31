@@ -1,0 +1,8 @@
+open 10.102.255.95    
+ftp
+ftp
+prompt
+cd uploads    
+mput C:\remote\upload\*.zip
+disconnect    
+bye
