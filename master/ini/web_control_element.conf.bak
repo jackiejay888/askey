@@ -1,0 +1,128 @@
+[setting]
+cancel_msta = taskkill /F /IM mshta.exe
+cancel_firefox = taskkill /F /IM firefox.exe
+acs_address_sub = /CWMServer/index.jsp
+wait_time = 20000
+askey_logo = /html/body/div/div/img
+refresh_button = //button[1]
+
+[login]
+username_id = login_username
+password_id = login_password
+login_id = btn_login3
+
+[location]
+heMS_SetParameterValues = .\..\\..\\temp\\HeMS_SetParameterValues
+heNB_SetParameterValuesResponse = .\..\\..\\temp\\HeNB_SetParameterValuesResponse
+
+[detail_message]
+serial_number_name = messageLog_s_like_m_cpe_serialNumber
+search_askey_root = messageLog_s_like_m_user_username
+input_askey_root = askey_root
+search_button = //button[@accessKey='S']
+acs_parametervalues_text = /html/body/form/table[1]/tbody/tr[2]/td[3]
+parametervalues_text = /html/body/form[2]/table/tbody/tr[2]/td[4]
+controlclick_title = Message Log Detail Dialog -- 網頁對話
+controlclick_nn = Internet Explorer_Server1
+
+[delete_file]
+get_allfile_number = //td[2]/form[@id='pagerForm']
+select_allfile_checkbox = input[type='checkbox']
+delete_all_device_button = /html/body/table/tbody/tr/td[1]/input[1]
+delete_all_message_button = /html/body/table/tbody/tr/td[1]/input[2]
+delete_all_message_queue_button = /html/body/form/table[2]/tbody/tr[1]/td[2]/input
+delete_successfully = /html/body/div/div/h4
+downframe = downFrame
+
+[add_file]
+downframe = downFrame
+click_add_button = //input[@id='up'][2]
+oui_text = //input[@id='opdata_cpeForm_oui']
+product_class = //input[@id='opdata_cpeForm_productClass']
+serial_number = //input[@id='opdata_cpeForm_serialNumber']
+submit_button = button[type='submit']
+add_cpe_successfully = /html/body/div/div/h4
+
+[system]
+system_id = Nav0
+system_operation_data = Operation Data
+system_parameter_list = Parameter List
+#system_list_location = sd212
+system_message_queue = Message Queue
+system_refresh_button = //input[@id='up' and @value='Refresh']
+system_message_log = Message Log
+system_unknown_cpe = Unknown CPE
+system_cpe_assignment = CPE Assignment
+system_cpe_upgrade = CPE Upgrade
+system_parameter_value_successfully = /html/body/div/div/h4
+
+[adminstate]
+adminstate_location = AdminState
+adminstate_value = html body form table tbody tr td#paramValue input#_parameterValue
+adminstate_get_value_button = /html/body/form/table/tbody/tr[6]/td[2]/button
+adminstate_set_value_button = /html/body/form/table/tbody/tr[7]/td[2]/input
+parameter_value_successfully = /html/body/div/div/h4
+boolean_true = 1
+boolean_false = 0
+
+[Earfcn]
+rf_location = RF
+earfcnDL_value = /html/body/div[1]/span/table/tbody/tr[2]/td[4]/input
+earfcnUL_value = /html/body/div[1]/span/table/tbody/tr[3]/td[4]/input
+earfcnDL_checkbox = /html/body/div[1]/span/table/tbody/tr[2]/td[1]/input[1]
+earfcnUL_checkbox = /html/body/div[1]/span/table/tbody/tr[3]/td[1]/input[1]
+earfcn_get_value_button = /html/body/div[1]/table/tbody/tr[2]/td/button[1]
+earfcn_set_value_button = /html/body/div[1]/table/tbody/tr[2]/td/button[2]
+parameter_value_successfully_folder = /html/body/div[2]/div/h4
+
+[PLMN]
+plmnlist_location = PLMNList
+plmnid_location = /html/body/div/div/div[2]/div[15]/div[2]/div[2]/div[6]/div[2]/div[2]/div[6]/div[1]/a[2]
+plmnid_value = /html/body/div[1]/span/table/tbody/tr[4]/td[4]/input
+plmnid_checkbox = /html/body/div[1]/span/table/tbody/tr[4]/td[1]/input[1]
+plmnid_get_value_button = /html/body/div[1]/table/tbody/tr[2]/td/button[1]
+plmnid_set_value_button = /html/body/div[1]/table/tbody/tr[2]/td/button[2]
+parameter_value_successfully_folder = /html/body/div[2]/div/h4
+
+[security]
+security_id = Nav1
+security_user = User
+security_change_password = Change Password
+security_logout = Logout
+security_license = License
+
+[event]
+event_id = Nav2
+event_message_log = Message Log
+event_inform_log = Inform Log
+event_upgrade_log = Upgrade Log
+event_system_log = System Log
+event_active_alarm = Active Alarm
+event_history_alarm = History Alarm
+event_alarm_definition = Alarm Definition
+event_log_auto_backup = Log Auto Backup
+
+[file_db]
+file_db_id = Nav3
+file_db_configuration_file = Configuration File
+file_db_log_file = Log File
+file_db_image_file = Image File
+file_db_certificate = Certificate
+file_db_db_auto_backup = DB Auto Backup
+file_db_db_utility = DB Utility
+file_db_history_log_file = History Log File
+file_db_file_server_config = File Server Config
+
+[testing]
+testing_id = Nav4
+testing_pd128_test = PD128 Test
+testing_cpe_parameter_test = CPE Parameter Test
+
+[help]
+help_id = Nav5
+help_contact_information = Contact Information
+help_Release_information = Release Information
+help_acs_help = ACS Help
+help_acs_url = ACS URL
+help_dashboard = Dashboard
+

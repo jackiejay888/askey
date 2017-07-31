@@ -1,0 +1,126 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>ePerView.sikuli\ePerView.sikuli</h2> <a href="ePerView.sikuli\ePerView.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> os
+<span class="kw">import</span> ConfigParser
+
+config = ConfigParser.SafeConfigParser()
+config.read(<span class="str">'..\ini\power.conf'</span>)
+max_power = config.get(<span class="str">'TX_Max_Power'</span>,<span class="str">'Max_Power'</span>)
+femto_ip = config.get(<span class="str">'TX_Max_Power'</span>,<span class="str">'femto_ip'</span>)
+
+<span class="kw">if</span> exists(Pattern(<img src="Start.png" />).similar(<span class="dig">0.90</span>)):
+        <span class="skw">doubleClick</span>(Pattern(<img src="Start.png" />).similar(<span class="dig">0.90</span>))
+        <span class="skw">click</span>(<img src="ePerView.png" />)
+        <span class="skw">sleep</span>(<span class="dig">7</span>)
+
+<span class="kw">if</span> exists(Pattern(<img src="Stop.png" />).similar(<span class="dig">0.90</span>),<span class="dig">10</span>):
+        <span class="skw">click</span>(Pattern(<img src="Stop.png" />).similar(<span class="dig">0.90</span>))
+<span class="cmt">#       click(Pattern("Stop.png").similar(0.90))    
+</span>        <span class="skw">click</span>(Pattern(<img src="clear_field.png" />).targetOffset(<span class="dig">0</span>,-<span class="dig">10</span>),<span class="dig">5</span>)
+        <span class="skw">type</span>(<span class="str">"a"</span>,KEY_CTRL)
+        <span class="skw">type</span>(Key.DELETE)
+        <span class="skw">type</span>(femto_ip)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(<span class="str">"a"</span>,KEY_CTRL)
+        <span class="skw">type</span>(Key.DELETE)
+        <span class="skw">type</span>(<span class="str">"7777"</span>)
+        <span class="skw">click</span>(Pattern(<img src="CancelOKAuto.png" />).targetOffset(-<span class="dig">20</span>,<span class="dig">0</span>))<span class="cmt">#OK</span>
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">click</span>(<img src="Clear.png" />)
+        <span class="skw">sleep</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="command_field.png" />)
+
+
+<span class="cmt">#    for i in range(0,40):
+</span><span class="cmt">#        max_power = int(max_power) + int(i)
+</span><span class="cmt">#        type("shell('set_tx_max_power "+ str(max_power)+"')")
+</span><span class="cmt">#        type(Key.ENTER)
+</span><span class="cmt">#        sleep(15)
+</span>
+<span class="cmt">#       type("shell('set_tx_max_power "+ max_power+"')")
+</span><span class="cmt">#       type(Key.ENTER)
+</span>
+
+<span class="kw">else</span>:
+    <span class="kw">raise</span> AssertionError,<span class="str">"switch android FtpClient app error"</span>
+
+
+
+
+
+
+<span class="cmt"># Pattern("CancelOKAuto.png").targetOffset(-90,0)#Cancel
+</span><span class="cmt"># Pattern("CancelOKAuto.png").targetOffset(80,0)#auto reconnect</span>
+</pre>
+</body>
+</html>

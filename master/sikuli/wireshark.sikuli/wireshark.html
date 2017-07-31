@@ -1,0 +1,119 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>wireshark.sikuli\wireshark.sikuli</h2> <a href="wireshark.sikuli\wireshark.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">if</span> exists(<img src="Win.png" />):
+        <span class="skw">click</span>(<img src="Win.png" />)
+        <span class="skw">type</span>(<span class="str">"cmd"</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span> (<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"cd c:\\remote"</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">type</span>(<span class="str">"plink.exe -ssh -pw "</span>+<span class="str">'""'</span>+<span class="str">" root@10.102.81.77"</span>+<span class="str">' "/usr/sbin/tcpdump -s 0 -U -n -w - -i eth0 not port 22 "'</span>+ <span class="str">" | "</span> +<span class="str">'"C:\Program Files\Wireshark\Wireshark.exe"'</span>+<span class="str">" -k -i  -"</span>)
+        <span class="skw">type</span>(Key.ENTER)
+<span class="kw">else</span>:
+    <span class="kw">raise</span> AssertionError,<span class="str">"Cann't capture packet from femtocell"</span>
+
+
+<span class="skw">type</span>(<img src="capture_filter.png" />, <span class="str">"s1ap"</span>)
+<span class="skw">click</span>(<img src="Apply.png" />)
+<span class="kw">if</span> exists(<img src="packet.png" />,<span class="dig">300</span>):
+    <span class="skw">click</span>(<img src="Stop_capture.png" />)
+<span class="kw">else</span>:
+    <span class="kw">raise</span> AssertionError, <span class="str">"Cann't stop capture packet"</span>
+    <span class="cmt"># print "Cann't stop capture packet"
+</span>
+<span class="skw">click</span>(<img src="File.png" />)
+<span class="skw">click</span>(<img src="Save.png" />)
+<span class="skw">sleep</span> (<span class="dig">3</span>)
+<span class="skw">type</span>(<span class="str">"result"</span>)
+<span class="skw">sleep</span> (<span class="dig">1</span>)
+<span class="skw">type</span>(<span class="str">"s"</span>,KEY_ALT)
+
+<span class="kw">if</span> exists(<img src="Save_as.png" />):
+    <span class="skw">click</span>(<img src="Yes.png" />)
+<span class="kw">else</span>:
+    <span class="kw">raise</span> <span class="str">"Cann't save capture packet"</span>
+
+<span class="skw">click</span>(<img src="File.png" />)
+<span class="skw">click</span>(<img src="export_text.png" />)
+<span class="skw">click</span>(<img src="As_plain_text.png" />)
+<span class="skw">type</span>(<span class="str">"result.txt"</span>)
+<span class="skw">type</span>(<span class="str">"s"</span>,KEY_ALT)
+<span class="kw">if</span> exists(<img src="Save_as.png" />):
+    <span class="skw">type</span>(<span class="str">"y"</span>,KEY_ALT)
+<span class="kw">else</span>:
+    <span class="kw">raise</span> AssertionError, <span class="str">"Cann't saveexport capture packet"</span>
+    <span class="cmt"># print "Cann't saveexport capture packet"
+</span><span class="skw">type</span>(<span class="str">"q"</span>,KEY_CTRL)
+</pre>
+</body>
+</html>

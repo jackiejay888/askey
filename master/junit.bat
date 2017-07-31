@@ -1,0 +1,1 @@
+nosetests testplan.py --with-xunit --xunit-file=output.xml
